@@ -1,8 +1,8 @@
 const crtlCine ={};
-const Voleto= require('../models/cine');
+const Voleto= require('../models/database');
 crtlCine.obtenerVoleto = async(req,res)=>{
     try{
-    const voletos = await cine.findAll({
+    const voletos = await Voleto.findAll({
         where: {
             estado: true,
         }
@@ -16,6 +16,11 @@ crtlCine.obtenerVoleto = async(req,res)=>{
         })
     }
     return res.json(voletos);
+}catch(error){
+    return res.status(error.status || 500 ).json({
+        message: error.message || 'Error interno del servidor'
+    });
+
 }
 
 
