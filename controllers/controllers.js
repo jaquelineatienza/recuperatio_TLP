@@ -1,11 +1,13 @@
 const crtlCine ={};
 const Voleto= require('../models/database');
 crtlCine.obtenerVoleto = async(req,res)=>{
-    const {id} = req.pararms;
-    try{
-    const voletos = await Voleto.findByPk(id)
   
-       
+    try{
+        const voletos = await Voleto.findAll({
+            where: {
+                estado: true,
+            }
+        });
     
     if (!voletos) {
         throw ({
@@ -14,8 +16,8 @@ crtlCine.obtenerVoleto = async(req,res)=>{
 
         })
     }
-    let voletoCompleto= voletos.toJSON();
-    return res.json(voletoCompleto);
+    // let voletoCompleto= voletos.toJSON();
+    return res.json(voletos);
 }catch(error){
     return res.status(error.status || 500 ).json({
         message: error.message || 'Error interno del servidor'
@@ -39,7 +41,7 @@ crtlCine.crearVoleto = async (req, res) => {
             duracion,
             cantidadButacas,
             horario,
-            codigo
+            codigo: new Date().getTime()
         });
 
         if (!voletos) {
@@ -71,7 +73,7 @@ crtlCine.actualizarVoleto = async (req, res) => {
            pelicula, 
            precio,
            duracion,
-            codigo
+           codigo: new Date().getTime(),
         }, {
             where: {
                 id:req.params.id,
