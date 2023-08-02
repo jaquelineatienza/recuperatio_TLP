@@ -35,11 +35,11 @@ app.use((req, res, next) => {
         <script>
         (
           () => setTimeout(() => {
-            window.location.href='http://localhost:${port}/cine';
+            window.location.href='http://localhost:${port}/cineA';
            }, 3000)           
         )();
         </script>
     </h1>`)
 });
 // Starting the server
-app.listen(port, () => console.log(`servidor corriendo en http://localhost:${port}/cine`));
+app.listen(port, () => console.log(`servidor corriendo en http://localhost:${port}/cineA`));
