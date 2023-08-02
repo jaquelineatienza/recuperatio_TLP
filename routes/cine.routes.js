@@ -8,16 +8,16 @@ const {eliminarVoleto,actualizarVoleto,obtenerVoleto,crearVoleto}= require('../c
 // ==========================================
 
 //vista General
-router.get('/cineA',(req,res)=>{
+router.get('/cine',(req,res)=>{
     res.render('index')
 })
 //Vista Crear
 
-router.get('/cineA/create',(req,res)=>{
+router.get('/cine/create',(req,res)=>{
     res.render('crear')
 })
 //vista editar
-router.get('/cineA/editar/:id', (req, res) => {
+router.get('/cine/editar/:id', (req, res) => {
     res.render('editar', { id: req.params.id });
 });
 
@@ -33,16 +33,16 @@ router.get('/cineA/editar/:id', (req, res) => {
 // ==========================================
 
 // Obtener todas las reservas
-router.get('/api/cineA/', obtenerVoleto);
+router.get('/api/cine/', obtenerVoleto);
 // Formulario para crear una reserva
 
-router.post('/api/cineA/create',  crearVoleto);
+router.post('/api/cine/create',  crearVoleto);
 // Formulario para actualizar una reserva
 
-router.put('/api/cineA/editar/:id', actualizarVoleto);
+router.put('/api/cine/editar/:id', actualizarVoleto);
 // Formulario para eliminar una reserva 
 
-router.delete('/api/cineA/:id', eliminarVoleto);
+router.delete('/api/cine/:id', eliminarVoleto);
 
  
  

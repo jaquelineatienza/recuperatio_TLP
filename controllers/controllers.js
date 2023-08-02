@@ -24,7 +24,7 @@ crtlCine.obtenerVoleto = async(req,res)=>{
 }
 }
 crtlCine.crearVoleto = async (req, res) => {
-    const { nombre, apellido,codigo,pelicula,fechaEstreno,duracion,horario,cantidadButacas} = req.body;
+    const { nombre, apellido,codigo,precio,pelicula,fechaEstreno,duracion,horario,cantidadButacas} = req.body;
 
     console.log('req.body')
     console.log(req.body)
@@ -33,6 +33,7 @@ crtlCine.crearVoleto = async (req, res) => {
         const voletos = await Voleto.create({
             nombre,
             apellido,
+            precio,
             fechaEstreno,
             pelicula,
             duracion,
@@ -57,7 +58,7 @@ crtlCine.crearVoleto = async (req, res) => {
 // Ctrl para actualizar una tarea
 crtlCine.actualizarVoleto = async (req, res) => {
     const { id } = req.params;
-    const { nombre, apellido,codigo,fechaEstreno,pelicula,duracion,cantidadButacas } = req.body;
+    const { nombre, apellido,precio,codigo,fechaEstreno,pelicula,duracion,cantidadButacas } = req.body;
     console.log('Datos recibidos:', req.body);
     console.log('ID de reserva:', req.params.id);
     try {
@@ -68,6 +69,7 @@ crtlCine.actualizarVoleto = async (req, res) => {
             cantidadButacas,
            horario,
            pelicula, 
+           precio,
            duracion,
             codigo
         }, {

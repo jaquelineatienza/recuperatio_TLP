@@ -1,31 +1,26 @@
-//dependencias
-const express= require('express');
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
-const {sequelize}= require('./database/db');
-const{Sequelize}= require('sequelize');
-const app =express();
-// Middlewares
-// TODO: Implementar middlewares
+const { sequelize } = require('./database/db');
+const { Sequelize } = require('sequelize');
+const app = express(); 
+
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 require('ejs');
-app.set('view enige','ejs');
-
-//routes
+app.set('view engine', 'ejs'); 
 app.use(require('./routes/cine.routes'));
 
 sequelize.authenticate()
-    .then(()=>console.log('Conexion a la base de datos exitosa'))
-    .catch((error)=>console.log('Error al conectar a la base de datos'))
+    .then(() => console.log('Conexion a la base de datos exitosa'))
+    .catch((error) => console.log('Error al conectar a la base de datos'))
 
 const port = process.env.PORT || 3000;
 
 // TODO: Si la petición no coincide con ninguna de las rutas declaradas, mostrar error 404
-
 app.use((req, res, next) => {
     res.write(`<div>
         <h1>404 - Ruta no encontrada</h1>
@@ -35,11 +30,11 @@ app.use((req, res, next) => {
         <script>
         (
           () => setTimeout(() => {
-            window.location.href='http://localhost:${port}/cineA';
+            window.location.href='http://localhost:${port}/cine';
            }, 3000)           
         )();
         </script>
     </h1>`)
 });
-// Starting the server
-app.listen(port, () => console.log(`servidor corriendo en http://localhost:${port}/cineA`));
+
+app.listen(port, () => console.log(`servidor corriendo en http://localhost:${port}/cine`));

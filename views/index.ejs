@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+
+<div class="container">
+
+    <div class="row mt-5">
+        <h1 class="text-center border-botton">Lista de Reservas</h1>
+        <div class="col">
+            <div class="col-md-3 mb-2">
+                <a href="/cineA/create" class="btn btn sm btn-primary">Nuevo </a>
+                <a href="/cineA" class="btn btn-info text-light">Inicio</a>
+            </div>
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        
+                        <th>nombre</th>
+                        <th>apellido</th>
+                        <th>fechaEstreno</th>
+                        <th>precio</th>
+                        <th>cantidad Butacas</th>
+                        <th>duracion</th>
+                        <th>horario</th>
+                        <th>Código</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="voletos">
+      
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/js/obtener.js"></script>
+    <%- include('partials/footer') %>
